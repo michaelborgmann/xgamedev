@@ -1,0 +1,460 @@
+    ____  ___  ________                          ________                  
+    \   \/  / /  _____/ _____     _____    ____  \______ \    ____  ___  __
+     \     / /   \  ___ \__  \   /     \ _/ __ \  |    |  \ _/ __ \ \  \/ /
+     /     \ \    \_\  \ / __ \_|  Y Y  \\  ___/  |    `   \\  ___/  \   / 
+    /___/\  \ \______  /(____  /|__|_|  / \___  >/_______  / \___  >  \_/  
+          \_/        \/      \/       \/      \/         \/      \/        
+    
+                                  ___  _   _
+                                  |__]  \_/
+                                  |__]   |
+
+   _  _ _ ____ _  _ ____ ____ _       ___  ____ ____ ____ _  _ ____ _  _ _  _
+   |\/| | |    |__| |__| |___ |       |__] |  | |__/ | __ |\/| |__| |\ | |\ |
+   |  | | |___ |  | |  | |___ |___    |__] |__| |  \ |__] |  | |  | | \| | \|
+
+                      #==*************++++++++++**********=@
+                     =**++++++++::+::::::::::::::::+++++++**@
+                   @=*+++++++++++:++++::::::::::::::+:++++++*@
+                   =*+++++++++++*++++*++::++::::+++:++:+++++**
+                  =*+++++++**++*=*++*+*++***+:+*+++++++++++++**
+                 #***++=+++*=+++:**+:::**+::*+**+*++*+++++++++*#
+                 *****+=*+++++:::::::::::::::++:::***+++*++++++=
+                #****+++++:::::::::::::::::::::::::+::+*=++*+++*
+               #**+++:++::+++::::::::::::::::::::::::::++++**+**
+              @**++++++++++::::+::::::::::::::::::::++:::++*++**#
+              =*+++++++++++++::+::::::::::::::::::::::+::::+++*+=
+             @**++++++++++++:::::::::::::::::::::::::+++:+++++++*
+             *++:+++**==###=###===####@###=*+:::::::::::++++++++*=
+       #*++++*=@######=======###########@@#@@@@#@@#*+:::::::+++++*
+    =++**==@@@@@@@@@@@@@@@########==##==#####@@@#=*=@@@@#*+:++++++@
+  @++++**=#@WWWWWW@@@@@#====*==========#==**::++**#@#@@@@@@@#**+++=
+  +**++**#@@WWWWWWWW@@##@@@@@####==**+:::--:::+*=###@@@W@@@@###@@*++++=
+  =**=#@@WWW@WWWWW@@=#==**==****===*++:::::+++*==#=######@@@###@##*++++++#
+    @@WW@WWWWWW@WW@=*****==+*=**+*++++::::++****++========######===+++++++*@
+       @WWWW@@WWWW=******=*++**+++*++++::++**+++++*=*+*====#@@@###==++++++++
+      @@W@@WWW@=##=***++****+++++++++**+++**++++++++****=##@@@@@@#==*+++++++@
+       @@WWWW@@#*==**+++++++:::::++++*++++**++++::++++++*=@@@@@@@##=*++++**@
+       @@@@W@@@##*=**+++++::::::::++**+++++**+++:::::::+++=@#@@@@##==+***@
+         @@W@@@@#*==*+++++::::::::++**+++++**+++::::::::+++*@W@@######
+        @@@W@@@==*==*+++++::::::::+***+++++***+:::::::++++**#@@####@
+           @@@@@=+*==*++++::::::::****+:::+***+:::::++++++*==#@###
+            @@@@@@#==**+++++::::::+*+*++:++***+:::::+++++**=####@
+               @@@@==***+++++:::::++*++++++*++:::::++++++**=@@@
+                @@@#=****+++++++++++++::::++++++++++++++***#@@@
+                  @@=*****+++++++++++++:::++++++++++++****=@@@
+                     #*****++++++***************+++++*****##@
+                      =*****++++++***++:::+***++:+++*****=@
+                 @@@@#==*****++++++++++++++++++++++*****@
+             @########=*=*****+++++++++++++++++++*****==#@@@
+           @##########=*+*=****++++++:::::++++++******###########
+         @#########====*++++*****++++:::::++++++**=**=############@
+  @###############=*===*++++++*=**++++++++++++**=*+**==#=###########
+ ##################=****+++++++++****++++++****++++**=======##############
+####################=***+++:+++++++++++++++++++++++*********==#############@
+
+       Copyright (c) 2015 by Michael Borgmann <michaelborgmann@mailbox.org>
+
+________________________________________________________________________________
+\____\____\____\____\____\____\____\____\____\____\____\____\____\____\____\____
+
+
+1. Introduction
+================================================================================
+
+XGameDev is a cross-platform game development library, featuring Linux, Android,
+Mac OS X, iOS, Windows (MinGW/MSVC).
+
+
+2. Build from Sources
+================================================================================
+
+Toolchain: C++, CMake, Git
+Dependencies: Lua, LuaBridge, GMock, SDL2, TinyXML2, GMock
+
+2.1 Mac OS X
+--------------------------------------------------------------------------------
+
+My development platform is Mac OS X 10.10 (Yosemite). I don't know how the build
+process works on other versions of OSX, even though I started on earlier
+versions of OSX.
+
+I made the build toolchain useable from the command line. So you should be
+comfortable with the Terminal app.
+
+a) Prepare the Toolchain
+
+   * Install Xcode (developer.apple.com/xcode)
+     It's Apple, so you need Xcode. Install from the App Store. It's free.
+
+   * Install toolchain with Homebrew (www.brew.sh)
+     Simply add Unix tools to your system with Homebrew (or MacPorts). Afterwards
+     you can use 'brew' to install whatever you like from the repository. This
+     project requires: Git, CMake, Mercurial, Subversion, and maybe TMux. You
+     can use the macosx.sh script to install Homebrew and any components:
+     $ setup/macosx.sh
+
+     I combined the steps to install the toolchain and frameworks into a simple
+     script. It installs follwoing toolchain components:
+     - Homebrew
+     - Git
+     - CMake
+     - Mercurial
+     - Subversion
+     - TMux
+
+b) Install Frameworks
+
+    Prebuild frameworks have to be installed to /Library/Frameworks (or maybe
+    somewhere else as into ~/Library/Frameworks).
+
+    I simplified this process with the macosx.sh script. It installs:
+    - SDL2: www.libsdl.org/download-2.0.php
+    - SDL2_image: www.libsdl.org/projects/SDL_image
+    - SDL2_ttf: www.libsdl.org/projects/SDL_ttf
+    - SDL2_mixer: www.libsdl.org/projects/SDL_mixer
+    - GMock
+    - Lua
+
+c) Get the Sources
+
+   Get the source code from the Git repository:
+   $ git clone ssh://account@url/path/xgamedev.git
+
+d) Create Xcode Project Files
+
+   CMake makes it simple to create a project which can be build with Xcode.
+   * Create a build directory within the root directory of XGameDev:
+     $ mkdir build.macosx
+     $ cd build.macosx
+   * Create the Xcode project files:
+     $ cmake .. -G Xcode
+   * Build the project form command line (or load it into Xcode):
+     $ xcodebuild -alltargets -configuration Release|Debug
+
+If everything's fine, that's all for Mac OS X.
+
+2.2 iOS 
+--------------------------------------------------------------------------------
+
+For iOS development you need a Mac with Xcode installed. If you do it as I do,
+your not done yet: I go the hardcore Unix console way of programming.
+
+a) Prepare the Toolchain
+
+   The installation of the toolchain is almost the same for Mac OS X. You need
+   Xcode and Homebrew. Additionally you can install some brew packages. For
+   simplicity, run the ios.sh script:
+   $ . setup/ios.sh
+
+   The following toolchain components will be installed:
+   - Homebrew
+   - Git
+   - CMake
+   - Mercurial
+   - Subversion
+   - TMux
+   - ios-sim
+   - reattach-to-user-namespace
+
+b) Install Libraries
+
+   The libraries I use have to be manually build for iOS. There's not really a
+   way around. However, I tried to make it as easy and repititive as possible.
+   This is step is combined with the previous by launching the ios.sh script:
+   $ . setup/ios.sh
+
+   It will install and build follwing libraries automatically:
+   - SDL2: www.libsdl.org/download-2.0.php
+   - SDL2_image: www.libsdl.org/projects/SDL_image
+   - SDL2_ttf: www.libsdl.org/projects/SDL_ttf
+   - SDL2_mixer: www.libsdl.org/projects/SDL_mixer
+   - GMock
+   - Lua (only install, but will be build with the xgamedev)
+
+c) Create Xcode Project Files
+
+   Creating an iOS project for Xcode and build it is not really simple, but I
+   tried to make using CMake for that task as easy a possible from the terminal.
+
+   * Set an alias to the previously installed iOS CMake Toolchain file (found at
+     cmake/toolchain/ios-cmake). Simply lauch the ios.sh script, and
+     check with the alias command in the shell if it's added:
+     $ . setup/iOS_CMake.sh
+   * Create a build directory within the root directory of XGameDev:
+     $ mkdir build.ios
+     $ cd build.ios
+   * Create the iOS Xcode project files:
+     $ ios-cmake .. -DIOS_PLATFORM=SIMULATOR|OS
+   * Build the project
+     $ xcodebuild -alltargets -configruation Debug|Release
+
+d) Run App in Simulator
+
+   I prefer to launch my apps in the simulator with the ios-sim script already
+   installed by brew:
+   $ ios-sim launch Demo.app
+   $ ios-sim launch TEST.app
+
+   Using tmux, I ran into trouble with the ios-sim, and have to install the
+   package reattach-to-user-namespace. Afterward I can rerun the ios-sim:
+   $ reattach-to-user-namespace ios-sim launch ShootOrDie.app
+
+
+2.3 Android
+--------------------------------------------------------------------------------
+
+Even though Android is an open source system using Java and supports native
+development, it is by far the most complicated system.
+
+a) Prepare the Toolchain
+
+   Installation and usage of Android somehow depends on the operating system you
+   are using. Currently my main development system is Mac OS X. Basically you
+   have to install the Android SDK + NDK.
+
+   The Android toolchain can be simply installed with the android.sh script
+   $ . setup/android.sh
+
+   This will install following toolchain components:
+   - Homebrew
+   - Git
+   - CMake
+   - Mercurial
+   - Subversion
+   - TMux
+   - Android SDK
+   - Android NDK
+   - Android Toolchain
+
+   * Install an SDK Version
+     This step may be required if no Android SDK version is installed!
+     Android will not be installed completely, you have to specify which
+     version you want to use. Launch this tool and install, e.g. version 19:
+     $ android
+
+b) Install Libraries
+   
+   All libraries for Android have to be build manually. The same setup script as
+   in the step above will make this too.
+   $ . setup/android.sh
+
+   Following libraries will be installed using the NDK:
+   - SDL2: www.libsdl.org/download-2.0.php
+   - SDL2_image: www.libsdl.org/projects/SDL_image
+   - SDL2_ttf: www.libsdl.org/projects/SDL_ttf
+   - SDL2_mixer: www.libsdl.org/projects/SDL_mixer
+   - GMock
+   - Lua
+
+c) Create XCode Project and Build Sources
+
+   After the toolchain is installed and all 3rd party libraries have been build,
+   you can build your own code, but only as libraries:
+
+   * Now, you can build the XGameDev C++ code, which will create Android
+     libraries. This will be done in a separate build directory within the
+     project
+     $ mkdir build.android
+     $ cd build.android
+     $ android-cmake ..
+     $ make
+
+d) Build Android Project
+
+   After you build the native libraries, you have to embedd them into a Java app
+   for Android, which is quiet tricky.
+
+   * Create Android Project
+     First, you have to setup an Android project directory, with build files,
+     sources, and resources. The process is automated in the Android_Build.sh
+     script (which may need minor modifications):
+     $ setup/build_android.sh
+   * Build Android Project
+     Now, you are ready to build the Android project itself:
+     $ cd android-project
+     $ ant debug
+
+e) Install App on Android Device/Simulator
+
+   If the app build correctly you can install it on your Android device, and
+   pray that nothing is broken:
+
+   * Install App on Device
+     Connect your device and just upload the app:
+     $ ant debug install
+   * Install App on Simulator
+     This requires to create a virtual android device,
+     $ android avd
+     where you can upload your up:
+     $ adb install -r bin/ShootOrDie-debug.apk
+
+f) Debug Android App
+
+   If something is doesn't work as expected, the debugging messages are likely
+   your best friends:
+   - Watch debug messages
+     $ adb logcat
+   - Clear debug messages
+     $ adb logcat -c
+   - Record debug messages
+     $ adb logcat > debug.log
+   Android redirects the standard output to /dev/null, so you have to prepare
+   the adb to show messages:
+     $ adb root
+     $ adb shell stop
+     $ adb shell setprop log.redirect-stdio true
+     $ adb shell start
+   Show only debug messages from the standard output (requires redirecting):
+     $ adb logcat | grep -e "stdout"
+
+
+2.4 Linux
+--------------------------------------------------------------------------------
+
+Building the sources and running the app can be very different depending on the
+used Linux distribution. I use Debian for development and testing inside
+VirtualBox, and try to make this step easily reproducable.
+
+a) Install VirtualBox (virtualbox.org)
+
+   Depending on your operating system, download VirtualBox from their website,
+   and while you are there, also get the GuestAdditions.
+
+b) Install Debian (debian.org)
+
+   Installing Linux into VirtualBox may take a while. For speed and usability
+   I decided to use Debian as test and development platform. Get an ISO from
+   their website, like the Network Boot (netinst), which will install the latest
+   Debian packages from the internet during the installation. When you are done,
+   you have to setup Debian for producion.
+
+   Add your user to Sudoers:
+   $ su
+   # visudo
+   Insert your user into 'Allow members of group sudo to execute any command':
+   %username ALL=(ALL:ALL) ALL
+
+   Add missing packages:
+   $ sudo apt-get install vim tmux
+   $ sudo apt-get install git cmake build-essential mercurial automake libtool
+   $ sudo apt-get install mesa-common-dev libgl1-mesa-dev #libglu1-mesa-dev
+   $ sudo apt-get install libreadline-dev
+
+c) Get XGameDev Sources
+
+   Get the sources using Git:
+   $ git clone ssh://login@domain/path/shootordie.git
+
+d) Build Libraries (SDL, Lua)
+
+   Before you are able to build XGameDev, you have to install any used
+   libraries. Simple start the script Linux_Libs from within the root
+   directory of the project (requires root)
+   $ setup/Linux_Libs.sh
+
+   To uninstall the libraries use the Linux_Uninstall script:
+   $ setup/Linux_Uninstall.sh
+
+e) Build XGameDev
+
+   Now you should be able to build XGameDev. First, create a build directory
+   within the root directory of the project:
+   mkdir build.linux
+   cd build.linux
+   cmake ..
+   make
+
+NOTE: If you have problems to get fullscreen, there is a Debian_Setup script,
+which may be what you are looking for:
+$ setup/Debina_Setup.sh
+
+
+2.5 Windows (MS Visual Studio)
+--------------------------------------------------------------------------------
+
+    To use the MSVC command line tools, you have to integrate it into the
+    PowerShell. As I'm absolutely not comfortable with Windows, I simply provide
+    a little hack to get this done:
+
+    - Open the PowerShell as Administrator to setup:
+      $ Set-ExecutionPolicy Unrestricted
+      $ New-Item -Path $Profile -ItemType file -Force
+      $ notepad $profile
+    - Add the following snippet to the profile.ps1:
+
+###########################################################
+#Set environment variables for Visual Studio Command Prompt
+pushd 'c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC'
+cmd /c "vcvarsall.bat&set" |
+foreach {
+  if ($_ -match "=") {
+    $v = $_.split("="); set-item -force -path "ENV:\$($v[0])"  -value "$($v[1])"
+  }
+}
+popd
+write-host "`nVisual Studio 2010 Command Prompt variables set." -ForegroundColor Yellow
+###########################################################
+
+    Now you should be able to use MSVC from command line
+
+    Install SDL2 to your system
+    - Get SDL2 developer package for MSVC
+    - Install it to your system (mine is C:\SDKs\SDL2-2.0.3)
+    - Do the same for SDL2_image, SDL2_ttf, SDL2_mixer
+
+    Build GMock:
+    - Traverse into external/gmock/build.msvc (create if needed)
+    - Create project: cmake ..
+    - Build project: msbuild all_build.vsxproj
+
+    Now you can build the project
+    - Create an external build directory inside your project
+      $ mkdir build.msvc
+      $ cd build.msvc
+    - Create the project build files
+      $ cmake ..
+    - Build the app in Debug/Release mode
+      $ MSBuild.exe ALL_BUILD.vcxproj /p:Configuration=Release
+    - To run the app you have to copy the SDL2.dll to your binary
+
+2.6 Windows (MinGW)
+--------------------------------------------------------------------------------
+
+    Install MinGW to your system
+    - Get the MinGW Compiler Suite (mingw-get-setup.exe), and install packages
+    - Integrate MinGW into PowerShell, appending the PATH environment variables
+      $ $env:PATH = $env:PATH + ";C:\MinGW\bin"
+
+    Install SDL2 to your system
+    - Get SDL2 developer package for MinGW (also includes the MSVC package)
+    - Install it to your system (mine is C:\SDKs\SDL2-2.0.3)
+
+    Build GMock:
+    - Traverse into external/gmock/build.mingw (create if needed)
+    - Create project: cmake .. -G "MinGw Makefiles"
+    - Build project: mingw32-make
+
+    Now you can build the project
+    - Create an external build directory inside your project
+      $ mkdir build.mingw
+      $ cd build.mingw
+    - Create the project build files
+      $ cmake .. -G "MinGW Makefiles"
+      $ mingw32-make
+    - To run the app you have to copy the SDL2.dll to your binary
+
+
+3. Known Issues
+--------------------------------------------------------------------------------
+LuaBridge is somewhat messy and needs fixes (I hope to supply a patches later).
+
+LuaBridge misses a 'isBoolean' function, which is easy to add. Simply edit the
+details/LuaRef.h file and append two times following line (at isNil, isNumber):
+        inline bool isBoolean () const { return type () == LUA_TBOOLEAN; }
+
+
+.------------------------------------------------------------------------------.
+|''':''''|'''':''''|'''':''''|'''':''''|'''':''''|'''':''''|'''':''''|'''':''''|
+|       10        20        30        40        50        60        70        8|
+|______________________________________________________________________________|
